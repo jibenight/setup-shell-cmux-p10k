@@ -79,6 +79,11 @@ Makes the sidebar use the (black) terminal background instead of its grey tint.
 cmux reload-config        # or press Cmd+Shift+,
 ```
 
+### Full configuration reference
+See **[`cmux/CONFIGURATION.md`](cmux/CONFIGURATION.md)** — a local mirror of the
+official cmux docs (file locations, every `cmux.json` setting, default keyboard
+shortcuts). Source: https://cmux.com/fr/docs/configuration
+
 ---
 
 ## 3. iTerm2 (legacy)
@@ -109,4 +114,5 @@ Docs: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/ab
 custom-p10k/.p10K.zsh   # Powerlevel10k prompt config   → ~/.p10k.zsh
 cmux/ghostty-config     # cmux terminal (Ghostty) config → ~/.config/ghostty/config
 cmux/cmux.json          # cmux app/sidebar settings      → ~/.config/cmux/cmux.json
+cmux/CONFIGURATION.md   # cmux config reference (mirror of the official docs)
 ```
