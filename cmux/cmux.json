@@ -1,0 +1,10 @@
+{
+  "$schema" : "https://raw.githubusercontent.com/manaflow-ai/cmux/main/web/data/cmux.schema.json",
+  "customSidebars" : {
+    "renderer" : "inProcess"
+  },
+  "sidebarAppearance" : {
+    "matchTerminalBackground" : true
+  },
+  "schemaVersion" : 1
+}

@@ -191,12 +191,12 @@
   # typeset -g POWERLEVEL9K_OS_ICON_CONTENT_EXPANSION='⭐'
 
   #################################[ host: icon & color custom]##################################
-  POWERLEVEL9K_HOST_LOCAL_FOREGROUND=006
+  POWERLEVEL9K_HOST_LOCAL_FOREGROUND=231
   POWERLEVEL9K_HOST_LOCAL_BACKGROUND=235
-  POWERLEVEL9K_HOST_REMOTE_FOREGROUND=006
+  POWERLEVEL9K_HOST_REMOTE_FOREGROUND=231
   POWERLEVEL9K_HOST_REMOTE_BACKGROUND=235
 
-  POWERLEVEL9K_HOST_ICON_FOREGROUND=006
+  POWERLEVEL9K_HOST_ICON_FOREGROUND=231
   POWERLEVEL9K_HOST_ICON_BACKGROUND=235
   POWERLEVEL9K_HOST_ICON="\uF109" # icon computer
 
@@ -225,19 +225,19 @@
 
   ##################################[ dir: current directory ]##################################
   # Current directory background color.
-  typeset -g POWERLEVEL9K_DIR_BACKGROUND=006
+  typeset -g POWERLEVEL9K_DIR_BACKGROUND=45
   # Default current directory foreground color.
-  typeset -g POWERLEVEL9K_DIR_FOREGROUND=235
+  typeset -g POWERLEVEL9K_DIR_FOREGROUND=16
   # If directory is too long, shorten some of its segments to the shortest possible unique
   # prefix. The shortened directory can be tab-completed to the original.
   typeset -g POWERLEVEL9K_SHORTEN_STRATEGY=truncate_to_unique
   # Replace removed segment suffixes with this symbol.
   typeset -g POWERLEVEL9K_SHORTEN_DELIMITER=
   # Color of the shortened directory segments.
-  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=235
+  typeset -g POWERLEVEL9K_DIR_SHORTENED_FOREGROUND=16
   # Color of the anchor directory segments. Anchor segments are never shortened. The first
   # segment is always an anchor.
-  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=235
+  typeset -g POWERLEVEL9K_DIR_ANCHOR_FOREGROUND=16
   # Display anchor directory segments in bold.
   typeset -g POWERLEVEL9K_DIR_ANCHOR_BOLD=true
   # Don't shorten directories that contain any of these files. They are anchors.

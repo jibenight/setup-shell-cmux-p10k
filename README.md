@@ -1,63 +1,110 @@
-# Setup iterm2 + powerlevel10k theme + ssh for mac os
+# Setup zsh + Powerlevel10k (cmux / iTerm2) for macOS
 
+Personal shell setup: **oh-my-zsh + Powerlevel10k** theme, plugins, a Nerd Font,
+and per-terminal configuration. Works in any terminal — the prompt lives in
+`~/.zshrc` + `~/.p10k.zsh`, independent of the terminal app.
 
-### Install iterm2:
+> **Terminal used today: [cmux](https://cmux.com).** The iTerm2 instructions are
+> kept below as legacy reference.
 
-https://iterm2.com
+---
 
-### Install oh-my-zsh:
+## 1. Shell base (terminal-agnostic)
 
-https://ohmyz.sh
+### Install oh-my-zsh
+https://ohmyz.sh — or clone manually:
+```sh
+git clone --depth=1 https://github.com/ohmyzsh/ohmyzsh.git ~/.oh-my-zsh
+```
 
-### Install powerlevel10k :
+### Install Powerlevel10k + plugins (as oh-my-zsh custom)
+```sh
+ZC=~/.oh-my-zsh/custom
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git       $ZC/themes/powerlevel10k
+git clone --depth=1 https://github.com/zsh-users/zsh-autosuggestions     $ZC/plugins/zsh-autosuggestions
+git clone --depth=1 https://github.com/zsh-users/zsh-syntax-highlighting $ZC/plugins/zsh-syntax-highlighting
+```
 
-https://github.com/romkatv/powerlevel10k
-
-in .zshrc change the theme by :
+In `~/.zshrc`:
+```sh
 ZSH_THEME="powerlevel10k/powerlevel10k"
+plugins=(zsh-autosuggestions zsh-syntax-highlighting git)
+```
 
-restart iterm
+### Prompt config
+Copy `custom-p10k/.p10K.zsh` from this repo to `~/.p10k.zsh`.
+(Style: **rainbow / powerline**, tuned for higher contrast — bright host text,
+vivid cyan dir background, pure-black/white foregrounds.)
 
-after setup powerlevel10k copy all the line of the .p10k.zsh in the repository to the ~/.p10k.zsh file create in the computer
+To regenerate from scratch: `p10k configure`.
 
-### PLUGINS
+### Font (required for the prompt glyphs)
+Install **MesloLGS Nerd Font**:
+```sh
+brew install --cask font-meslo-lg-nerd-font
+```
 
-=> zsh-autosuggestions :
+---
 
-Show the last command
+## 2. cmux configuration
 
-https://github.com/zsh-users/zsh-autosuggestions/blob/master/INSTALL.md#oh-my-zsh
+cmux embeds the **Ghostty** terminal engine and reads its config from:
 
-=> zsh-syntax-highlighting:
+- `~/.config/ghostty/config`
+- `~/Library/Application Support/com.mitchellh.ghostty/config`
 
-Color the command 
+Terminal rendering (background, font, contrast…) is set in the **Ghostty config**,
+not in `cmux.json`. The cmux GUI (`Cmd+,`) only exposes behavior + app/sidebar appearance.
 
-https://github.com/zsh-users/zsh-syntax-highlighting/blob/master/INSTALL.md
+### Terminal look — `cmux/ghostty-config` → `~/.config/ghostty/config`
+```ini
+background       = #000000              # pure black (default theme was #282c34, grey)
+font-family      = MesloLGS Nerd Font Mono
+minimum-contrast = 1.1                  # force a minimum legible contrast (1 = off, ~21 = b/w)
+font-thicken     = true                 # thicker glyphs — big readability win on Retina
+```
 
-### command 
+### App / sidebar — `cmux/cmux.json` → `~/.config/cmux/cmux.json`
+```json
+{
+  "sidebarAppearance": { "matchTerminalBackground": true }
+}
+```
+Makes the sidebar use the (black) terminal background instead of its grey tint.
 
-**file configuration oh my zsh**
-code ~/.zshrc 
+### Apply changes
+```sh
+cmux reload-config        # or press Cmd+Shift+,
+```
 
-**file configuration of powerlevel10k**
-code ~/.p10k.zsh
+---
 
-use code for open with vscode or use nano editor
+## 3. iTerm2 (legacy)
 
-## Manually generating your SSH key in macOS
+Kept for reference — no longer used.
 
-follow the instruction and type enter for passphrase (no setup a passphrase)
+- Install iTerm2: https://iterm2.com
+- Same oh-my-zsh / Powerlevel10k / plugins / `.p10k.zsh` as above.
+- Set the iTerm2 font to **MesloLGS NF** (Preferences → Profiles → Text).
 
-ssh-keygen -t rsa 
+---
 
-Check if the keys exist 
+## 4. SSH key for GitHub
 
+Generate a key (press Enter for no passphrase):
+```sh
+ssh-keygen -t ed25519 -C "your_email@example.com"   # or: ssh-keygen -t rsa
 ls ~/.ssh
+pbcopy < ~/.ssh/id_ed25519.pub                       # copy the PUBLIC key
+```
+Then add it on GitHub → Settings → SSH and GPG keys.
+Docs: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
 
-Save key to the clipboard(change the **_id_rsa.pub_** by the right key in the computer)
+---
 
-pbcopy < ~/.ssh/id_rsa.pub
-
-More infos :
-
-https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh
+## Files in this repo
+```
+custom-p10k/.p10K.zsh   # Powerlevel10k prompt config   → ~/.p10k.zsh
+cmux/ghostty-config     # cmux terminal (Ghostty) config → ~/.config/ghostty/config
+cmux/cmux.json          # cmux app/sidebar settings      → ~/.config/cmux/cmux.json
+```
