@@ -1,0 +1,12 @@
+# Config ghostty lue par cmux
+# Force le fond du terminal en noir pur (le thème par défaut était #282c34, gris).
+background = #000000
+
+# Police : MesloLGS Nerd Font (variante Mono, chasse fixe) — installée via Homebrew.
+font-family = "MesloLGS Nerd Font Mono"
+
+# Contraste minimum forcé (1 = désactivé, plus haut = texte plus lisible ; ~21 = noir/blanc pur).
+minimum-contrast = 1.1
+
+# Épaissit le rendu du texte — améliore nettement la lisibilité sur écran Retina.
+font-thicken = true
