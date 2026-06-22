@@ -39,9 +39,11 @@ vivid cyan dir background, pure-black/white foregrounds.)
 To regenerate from scratch: `p10k configure`.
 
 ### Font (required for the prompt glyphs)
-Install **MesloLGS Nerd Font**:
+Any **Nerd Font** works. Current choice is **FiraCode Nerd Font** (ligatures);
+**MesloLGS Nerd Font** is the alternative recommended by Powerlevel10k.
 ```sh
-brew install --cask font-meslo-lg-nerd-font
+brew install --cask font-fira-code-nerd-font    # current
+brew install --cask font-meslo-lg-nerd-font     # p10k's official recommendation
 ```
 
 ---
@@ -59,7 +61,7 @@ not in `cmux.json`. The cmux GUI (`Cmd+,`) only exposes behavior + app/sidebar a
 ### Terminal look — `cmux/ghostty-config` → `~/.config/ghostty/config`
 ```ini
 background       = #000000              # pure black (default theme was #282c34, grey)
-font-family      = MesloLGS Nerd Font Mono
+font-family      = FiraCode Nerd Font Mono   # or: MesloLGS Nerd Font Mono (p10k's pick)
 minimum-contrast = 1.1                  # force a minimum legible contrast (1 = off, ~21 = b/w)
 font-thicken     = true                 # thicker glyphs — big readability win on Retina
 ```

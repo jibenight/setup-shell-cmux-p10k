@@ -2,8 +2,11 @@
 # Force le fond du terminal en noir pur (le thème par défaut était #282c34, gris).
 background = #000000
 
-# Police : MesloLGS Nerd Font (variante Mono, chasse fixe) — installée via Homebrew.
-font-family = "MesloLGS Nerd Font Mono"
+# Police : FiraCode Nerd Font (variante Mono, chasse fixe, ligatures) — installée via Homebrew.
+font-family = "FiraCode Nerd Font Mono"
+# Option : MesloLGS Nerd Font (recommandée par Powerlevel10k, alignement parfait du prompt).
+# Décommenter la ligne ci-dessous (et commenter celle du dessus) pour l'utiliser :
+# font-family = "MesloLGS Nerd Font Mono"
 
 # Contraste minimum forcé (1 = désactivé, plus haut = texte plus lisible ; ~21 = noir/blanc pur).
 minimum-contrast = 1.1
